@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>03 — Work Grid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+
+  <div class="wg-header">
+    <h2 class="wg-title">Portafolio</h2>
+    <a href="#" class="wg-link">Iniciar proyecto →</a>
+  </div>
+
+  <div class="wg-filters">
+    <button class="wg-filter active" data-filter="all">Todos</button>
+    <button class="wg-filter" data-filter="barberia">Barbería</button>
+    <button class="wg-filter" data-filter="dental">Dental</button>
+    <button class="wg-filter" data-filter="estetica">Estética</button>
+    <button class="wg-filter" data-filter="medicina">Medicina</button>
+    <button class="wg-filter" data-filter="restaurante">Restaurante</button>
+    <button class="wg-filter" data-filter="nails">Nail Studio</button>
+  </div>
+
+  <!-- Grid flat — solo visible al filtrar -->
+  <div id="wg-flat"></div>
+
+  <div class="wg" id="wg">
+
+    <!-- COL 1 -->
+    <div class="wg-col" data-speed="0" data-col="1" style="margin-top:0">
+
+      <div class="wg-card wg-card--tall" data-href="https://joelarteaga2000-coder.github.io/barber-basic/" data-cat="barberia" data-col="1">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/barber-basic/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Barbería</span><span class="wg-cat">Web · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/medico-premium/" data-cat="medicina" data-col="1">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/medico-premium/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Medicina</span><span class="wg-cat">Salud · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/esteticas-basic/" data-cat="estetica" data-col="1">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/esteticas-basic/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Estética II</span><span class="wg-cat">Beauty · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/restaurantes-basic/" data-cat="restaurante" data-col="1">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/restaurantes-basic/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Restaurante II</span><span class="wg-cat">Food · 2025</span></div>
+      </div>
+
+    </div>
+
+    <!-- COL 2 -->
+    <div class="wg-col" data-speed="0.8" data-col="2" style="margin-top:clamp(4rem,10vw,9rem)">
+
+      <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/dentista-premium/" data-cat="dental" data-col="2">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/dentista-premium/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Odontología</span><span class="wg-cat">Salud · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--tall" data-href="https://joelarteaga2000-coder.github.io/esteticas-pro/" data-cat="estetica" data-col="2">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/esteticas-pro/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Estética</span><span class="wg-cat">Beauty · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/dentista-basica/" data-cat="dental" data-col="2">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/dentista-basica/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Odontología II</span><span class="wg-cat">Salud · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/barber-premium/" data-cat="barberia" data-col="2">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/barber-premium/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Barbería II</span><span class="wg-cat">Web · 2025</span></div>
+      </div>
+
+    </div>
+
+    <!-- COL 3 -->
+    <div class="wg-col" data-speed="0.4" data-col="3" style="margin-top:clamp(1.5rem,4vw,4rem)">
+
+      <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/restaurantes-premium/" data-cat="restaurante" data-col="3">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/restaurantes-premium/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Restaurante</span><span class="wg-cat">Food · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--tall" data-href="https://joelarteaga2000-coder.github.io/u-as-basic/" data-cat="nails" data-col="3">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/u-as-basic/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Nail Studio II</span><span class="wg-cat">Beauty · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/medico-basic/" data-cat="medicina" data-col="3">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/medico-basic/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Medicina II</span><span class="wg-cat">Salud · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/barber-pro/" data-cat="barberia" data-col="3">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/barber-pro/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Barbería III</span><span class="wg-cat">Web · 2025</span></div>
+      </div>
+
+    </div>
+
+    <!-- COL 4 -->
+    <div class="wg-col" data-speed="1" data-col="4" style="margin-top:clamp(6rem,14vw,13rem)">
+
+      <div class="wg-card wg-card--tall" data-href="https://joelarteaga2000-coder.github.io/dentista-pro/" data-cat="dental" data-col="4">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/dentista-pro/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Dental</span><span class="wg-cat">Salud · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/esteticas-premium/" data-cat="estetica" data-col="4">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/esteticas-premium/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Estética III</span><span class="wg-cat">Beauty · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/u-as-pro/" data-cat="nails" data-col="4">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/u-as-pro/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Nail Studio</span><span class="wg-cat">Beauty · 2025</span></div>
+      </div>
+
+    </div>
+
+    <!-- COL 5 -->
+    <div class="wg-col" data-speed="0.2" data-col="5" style="margin-top:clamp(2rem,5vw,5rem)">
+
+      <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/restaurantes-pro/" data-cat="restaurante" data-col="5">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/restaurantes-pro/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Alta Cocina</span><span class="wg-cat">Food · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--tall" data-href="https://joelarteaga2000-coder.github.io/u-as-premium/" data-cat="nails" data-col="5">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/u-as-premium/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Nail Studio III</span><span class="wg-cat">Beauty · 2025</span></div>
+      </div>
+
+      <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/medico-pro/" data-cat="medicina" data-col="5">
+        <div class="wg-media"><div class="wg-phone"><div class="wg-phone-frame"><div class="wg-phone-notch"></div><iframe src="https://joelarteaga2000-coder.github.io/medico-pro/" loading="lazy" tabindex="-1"></iframe></div></div><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+        <div class="wg-info"><span class="wg-name">Clínica</span><span class="wg-cat">Salud · 2025</span></div>
+      </div>
+
+    </div>
+
+  </div><!-- /wg -->
+
+  <script type="module" src="/src/work.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>02 — Nav</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+
+  <!-- NAV — [DISO® pill] [MENU ▾ pill] ... [LET'S TALK pill] -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">DISO®</a>
+
+    <button class="nav-menu-btn" id="nav-menu-btn" aria-expanded="false">
+      <span id="nav-menu-label">MENU</span>
+      <svg class="nav-chevron" viewBox="0 0 12 7" fill="none">
+        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <a href="mailto:hola@diso.mx" class="nav-talk">LET'S TALK</a>
+  </nav>
+
+  <!-- MENU FULLSCREEN — cubre toda la pantalla -->
+  <div id="menu-overlay">
+    <div class="menu-inner">
+      <ul class="menu-list">
+        <li class="menu-item">
+          <a href="#" class="menu-link">
+            <span class="menu-num">01</span>
+            <span class="menu-text"><span class="menu-text-inner">Nosotros</span></span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="#" class="menu-link">
+            <span class="menu-num">02</span>
+            <span class="menu-text"><span class="menu-text-inner">Portafolio</span></span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="#" class="menu-link">
+            <span class="menu-num">03</span>
+            <span class="menu-text"><span class="menu-text-inner">Servicios</span></span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="#" class="menu-link">
+            <span class="menu-num">04</span>
+            <span class="menu-text"><span class="menu-text-inner">Soluciones IA</span></span>
+          </a>
+        </li>
+      </ul>
+      <div class="menu-footer">
+        <span>hola@diso.mx</span>
+        <span>México · 2025</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido de fondo para ver el efecto del nav -->
+  <main class="nav-demo-content">
+    <h1>Contenido de la página</h1>
+    <p>Haz scroll para ver cómo el nav cambia de fondo.</p>
+    <div class="spacer"></div>
+  </main>
+
+<script type="module" src="/src/nav.js"></script>
+</body>
+</html>

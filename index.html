@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DISO® — Diseño. IA. Resultados.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+
+  <!-- ── LOADER ─────────────────────────────────────────── -->
+  <div id="loader">
+    <div class="ldr-top">
+      <div class="ldr-logo-wrap"><span class="ldr-logo">DISO®</span></div>
+      <span class="ldr-pct" id="ldr-pct">0%</span>
+    </div>
+    <div class="ldr-center">
+      <h2 class="ldr-big">
+        <span class="ldr-line"><span class="ldr-inner">Diseño.</span></span>
+        <span class="ldr-line"><span class="ldr-inner ldr-dim">IA.</span></span>
+        <span class="ldr-line"><span class="ldr-inner">Resultados.</span></span>
+      </h2>
+    </div>
+    <div class="ldr-bot">
+      <div class="ldr-tag-wrap"><span class="ldr-tag">Agencia Digital · México · 2025</span></div>
+      <div class="ldr-bar-wrap"><div class="ldr-bar" id="ldr-bar"></div></div>
+    </div>
+  </div>
+
+  <!-- ── CORTINA DE TRANSICIÓN ──────────────────────────── -->
+  <div id="page-curtain"></div>
+
+  <!-- ── MAIN ───────────────────────────────────────────── -->
+  <main id="main">
+
+    <!-- NAV -->
+    <nav id="nav">
+      <a href="#" class="nav-logo">DISO®</a>
+      <button class="nav-menu-btn" id="nav-menu-btn" aria-expanded="false">
+        <span id="nav-menu-label">MENU</span>
+        <!-- Ícono hamburger (estado MENU) -->
+        <svg class="nav-icon nav-icon--menu" viewBox="0 0 16 12" fill="none">
+          <line x1="0" y1="1"  x2="16" y2="1"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="0" y1="6"  x2="16" y2="6"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="0" y1="11" x2="16" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <!-- Ícono X (estado CLOSE) -->
+        <svg class="nav-icon nav-icon--close" viewBox="0 0 12 12" fill="none">
+          <path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <a href="#" class="nav-talk" data-goto="contacto">LET'S TALK</a>
+    </nav>
+
+    <!-- MENU DROPDOWN -->
+    <div id="menu-overlay">
+      <div class="menu-inner">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a href="#nosotros" class="menu-link">
+              <span class="menu-text"><span class="menu-text-inner">Nosotros</span></span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#work" class="menu-link">
+              <span class="menu-text"><span class="menu-text-inner">Portafolio</span></span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#contacto" class="menu-link">
+              <span class="menu-text"><span class="menu-text-inner">Contacto</span></span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#soluciones" class="menu-link">
+              <span class="menu-text"><span class="menu-text-inner">Soluciones IA</span></span>
+            </a>
+          </li>
+        </ul>
+        <div class="menu-footer">
+          <span>hola@diso.mx</span>
+          <a href="#" class="menu-footer-cta" data-goto="contacto">LET'S TALK</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ WORK — sección inicial activa ════════════════════ -->
+    <section id="work" class="page-section page-section--active">
+      <div class="wg-header">
+        <h2 class="wg-title">Work</h2>
+        <a href="#" class="wg-link">Iniciar proyecto →</a>
+      </div>
+
+      <div class="wg-filters">
+        <button class="wg-filter active" data-filter="all">Todos</button>
+        <button class="wg-filter" data-filter="barberia">Barbería</button>
+        <button class="wg-filter" data-filter="dental">Dental</button>
+        <button class="wg-filter" data-filter="estetica">Estética</button>
+        <button class="wg-filter" data-filter="medicina">Medicina</button>
+        <button class="wg-filter" data-filter="restaurante">Restaurante</button>
+        <button class="wg-filter" data-filter="nails">Nail Studio</button>
+      </div>
+
+      <div id="wg-flat"></div>
+
+      <div class="wg" id="wg">
+        <!-- COL 1 -->
+        <div class="wg-col" data-speed="0" data-col="1" style="margin-top:0">
+          <div class="wg-card wg-card--tall" data-href="https://joelarteaga2000-coder.github.io/barber-basic/" data-cat="barberia" data-col="1">
+            <div class="wg-media"><img src="assets/portfolio/barberia.jpg" alt="Barbería" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Barbería</span><span class="wg-cat">Web · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/medico-premium/" data-cat="medicina" data-col="1">
+            <div class="wg-media"><img src="assets/portfolio/medicina.jpg" alt="Medicina" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Medicina</span><span class="wg-cat">Salud · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/esteticas-basic/" data-cat="estetica" data-col="1">
+            <div class="wg-media"><img src="assets/portfolio/estetica-ii.jpg" alt="Estética II" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Estética II</span><span class="wg-cat">Beauty · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/restaurantes-basic/" data-cat="restaurante" data-col="1">
+            <div class="wg-media"><img src="assets/portfolio/restaurante-ii.jpg" alt="Restaurante II" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Restaurante II</span><span class="wg-cat">Food · 2025</span></div>
+          </div>
+        </div>
+        <!-- COL 2 -->
+        <div class="wg-col" data-speed="0.8" data-col="2" style="margin-top:clamp(4rem,10vw,9rem)">
+          <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/dentista-premium/" data-cat="dental" data-col="2">
+            <div class="wg-media"><img src="assets/portfolio/odontologia.jpg" alt="Odontología" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Odontología</span><span class="wg-cat">Salud · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--tall" data-href="https://joelarteaga2000-coder.github.io/esteticas-pro/" data-cat="estetica" data-col="2">
+            <div class="wg-media"><img src="assets/portfolio/estetica.jpg" alt="Estética" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Estética</span><span class="wg-cat">Beauty · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/dentista-basica/" data-cat="dental" data-col="2">
+            <div class="wg-media"><img src="assets/portfolio/odontologia-ii.jpg" alt="Odontología II" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Odontología II</span><span class="wg-cat">Salud · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/barber-premium/" data-cat="barberia" data-col="2">
+            <div class="wg-media"><img src="assets/portfolio/barberia-ii.jpg" alt="Barbería II" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Barbería II</span><span class="wg-cat">Web · 2025</span></div>
+          </div>
+        </div>
+        <!-- COL 3 -->
+        <div class="wg-col" data-speed="0.4" data-col="3" style="margin-top:clamp(1.5rem,4vw,4rem)">
+          <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/restaurantes-premium/" data-cat="restaurante" data-col="3">
+            <div class="wg-media"><img src="assets/portfolio/restaurante.jpg" alt="Restaurante" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Restaurante</span><span class="wg-cat">Food · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--tall" data-href="https://joelarteaga2000-coder.github.io/u-as-basic/" data-cat="nails" data-col="3">
+            <div class="wg-media"><img src="assets/portfolio/nail-studio-ii.jpg" alt="Nail Studio II" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Nail Studio II</span><span class="wg-cat">Beauty · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/medico-basic/" data-cat="medicina" data-col="3">
+            <div class="wg-media"><img src="assets/portfolio/medicina-ii.jpg" alt="Medicina II" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Medicina II</span><span class="wg-cat">Salud · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/barber-pro/" data-cat="barberia" data-col="3">
+            <div class="wg-media"><img src="assets/portfolio/barberia-iii.jpg" alt="Barbería III" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Barbería III</span><span class="wg-cat">Web · 2025</span></div>
+          </div>
+        </div>
+        <!-- COL 4 -->
+        <div class="wg-col" data-speed="1" data-col="4" style="margin-top:clamp(6rem,14vw,13rem)">
+          <div class="wg-card wg-card--tall" data-href="https://joelarteaga2000-coder.github.io/dentista-pro/" data-cat="dental" data-col="4">
+            <div class="wg-media"><img src="assets/portfolio/dental.jpg" alt="Dental" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Dental</span><span class="wg-cat">Salud · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/esteticas-premium/" data-cat="estetica" data-col="4">
+            <div class="wg-media"><img src="assets/portfolio/estetica-iii.jpg" alt="Estética III" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Estética III</span><span class="wg-cat">Beauty · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/u-as-pro/" data-cat="nails" data-col="4">
+            <div class="wg-media"><img src="assets/portfolio/nail-studio.jpg" alt="Nail Studio" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Nail Studio</span><span class="wg-cat">Beauty · 2025</span></div>
+          </div>
+        </div>
+        <!-- COL 5 -->
+        <div class="wg-col" data-speed="0.2" data-col="5" style="margin-top:clamp(2rem,5vw,5rem)">
+          <div class="wg-card wg-card--short" data-href="https://joelarteaga2000-coder.github.io/restaurantes-pro/" data-cat="restaurante" data-col="5">
+            <div class="wg-media"><img src="assets/portfolio/alta-cocina.jpg" alt="Alta Cocina" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Alta Cocina</span><span class="wg-cat">Food · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--tall" data-href="https://joelarteaga2000-coder.github.io/u-as-premium/" data-cat="nails" data-col="5">
+            <div class="wg-media"><img src="assets/portfolio/nail-studio-iii.jpg" alt="Nail Studio III" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Nail Studio III</span><span class="wg-cat">Beauty · 2025</span></div>
+          </div>
+          <div class="wg-card wg-card--mid" data-href="https://joelarteaga2000-coder.github.io/medico-pro/" data-cat="medicina" data-col="5">
+            <div class="wg-media"><img src="assets/portfolio/clinica.jpg" alt="Clínica" class="wg-card-img" loading="lazy" onerror="this.style.background='#1a1a1a';this.removeAttribute('src')"><div class="wg-overlay"><div class="wg-overlay-inner"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H7M15 3V11" stroke="currentColor" stroke-width="1.5"/></svg><span>Ver proyecto</span></div></div></div>
+            <div class="wg-info"><span class="wg-name">Clínica</span><span class="wg-cat">Salud · 2025</span></div>
+          </div>
+        </div>
+      </div><!-- /wg -->
+    </section>
+
+    <!-- ══ NOSOTROS ══════════════════════════════════════════ -->
+    <!-- ══ NOSOTROS — reemplaza el bloque existente en index.html ══════════════ -->
+<section id="nosotros" class="page-section">
+
+  <!-- ── BLOQUE 1: HERO STATEMENT + VIDEO ───────────────────────────────── -->
+  <div class="nos-hero">
+
+    <!-- Gradiente rojo superior -->
+    <div class="nos-hero-glow"></div>
+
+    <!-- Frase gigante -->
+    <div class="nos-hero-text">
+      <h2 class="nos-hero-headline">
+        <span class="nos-word nos-word--white">HOY</span>
+        <span class="nos-word nos-word--white">EL</span>
+        <span class="nos-word nos-word--white">DISEÑO</span>
+        <span class="nos-word nos-word--white">NO</span>
+        <span class="nos-word nos-word--white">ES</span>
+        <span class="nos-word nos-word--dim">DECORACIÓN.</span>
+        <span class="nos-word nos-word--white">ES</span>
+        <span class="nos-word nos-word--white">TU</span>
+        <span class="nos-word nos-word--dim">VENTAJA.</span>
+      </h2>
+    </div>
+
+  </div><!-- /nos-hero -->
+
+  <!-- ── VIDEO + TEXTO — crecen con scroll ── -->
+  <div class="nos-hero-bottom" id="nosHeroBottom">
+
+    <div class="nos-reel-wrap" id="nosReelWrap">
+      <div class="nos-reel-inner" id="nosReelInner">
+        <iframe
+          id="nosReelVideo"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=0&modestbranding=1&rel=0&showinfo=0"
+          title="DISO® Show Reel 2025"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        ></iframe>
+        <div class="nos-reel-overlay" id="nosReelOverlay">
+          <button class="nos-reel-play" id="nosReelPlay" aria-label="Reproducir reel">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="currentColor"/>
+            </svg>
+            <span>SHOW REEL 2025</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="nos-hero-para" id="nosHeroPara">
+      <p>
+        No vendemos plantillas ni promesas vacías. En <strong>DISO®</strong>
+        construimos desde cero — webs rápidas, sistemas que trabajan solos
+        y automatizaciones que te devuelven tiempo. Digitalización real,
+        para negocios reales, sin pagar precios de corporativo.
+      </p>
+      <a href="#" class="nos-hero-cta" data-goto="contacto">LET'S TALK →</a>
+    </div>
+
+  </div>
+
+  <!-- ── BLOQUE 2: FRASE CENTRAL + CARRETES DIAGONALES ───────────────────── -->
+  <div class="nos-shaping" id="nosShaping">
+
+    <!-- Texto central — GSAP lo centra y hace zoom out con scroll -->
+    <h3 class="nos-shaping-text">
+      <span class="nos-sw nos-sw--white">CONSTRUYENDO</span>
+      <span class="nos-sw nos-sw--dim">EL NEGOCIO</span>
+      <span class="nos-sw nos-sw--white">DEL FUTURO,</span>
+      <span class="nos-sw nos-sw--dim">HOY.</span>
+    </h3>
+
+    <!-- Carrete fila 1 — entra desde la izquierda, inclinada -->
+    <div class="nos-reel-row nos-reel-row--1">
+      <div class="nos-reel-card"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&q=80" alt=""></div>
+      <div class="nos-reel-card"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=500&q=80" alt=""></div>
+      <div class="nos-reel-card"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" alt=""></div>
+      <div class="nos-reel-card"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=500&q=80" alt=""></div>
+      <div class="nos-reel-card"><img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=500&q=80" alt=""></div>
+    </div>
+
+    <!-- Carrete fila 2 — entra desde la derecha -->
+    <div class="nos-reel-row nos-reel-row--2">
+      <div class="nos-reel-card"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80" alt=""></div>
+      <div class="nos-reel-card"><img src="https://images.unsplash.com/photo-1493421419110-74f4e85ba126?w=500&q=80" alt=""></div>
+      <div class="nos-reel-card"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&q=80" alt=""></div>
+      <div class="nos-reel-card"><img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=500&q=80" alt=""></div>
+      <div class="nos-reel-card"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80" alt=""></div>
+    </div>
+
+
+  </div>
+
+  <!-- ── BLOQUE 3: QUIÉNES SOMOS — estilo Nika ── -->
+  <div class="nos-about">
+
+    <!-- Título grande animado -->
+    <div class="nos-about-header">
+      <h2 class="nos-about-title">
+        <span class="nos-ab-line"><span class="nos-ab-inner">LO QUE NOS</span></span>
+        <span class="nos-ab-line"><span class="nos-ab-inner nos-ab-inner--dim">HACE DIFERENTES:</span></span>
+        <span class="nos-ab-line"><span class="nos-ab-inner">NUESTRA GENTE,</span></span>
+        <span class="nos-ab-line"><span class="nos-ab-inner nos-ab-inner--dim">NUESTRA PASIÓN</span></span>
+        <span class="nos-ab-line"><span class="nos-ab-inner">Y NUESTROS</span></span>
+        <span class="nos-ab-line"><span class="nos-ab-inner">RESULTADOS.</span></span>
+      </h2>
+    </div>
+
+    <!-- Imagen + texto lado a lado -->
+    <div class="nos-about-body">
+
+      <!-- Imagen izquierda -->
+      <div class="nos-about-img-wrap">
+        <div class="nos-about-img-inner">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+            alt="Equipo DISO®"
+          />
+        </div>
+      </div>
+
+      <!-- Texto derecho -->
+      <div class="nos-about-content">
+        <p class="nos-about-para">
+          Seleccionamos a cada integrante para atender las necesidades únicas de nuestros clientes.
+          En <strong>DISO®</strong> diseñamos soluciones digitales a medida, guiadas por visión estratégica,
+          para crear conexiones auténticas entre marcas y negocios reales.
+        </p>
+
+        <ul class="nos-about-list">
+          <li class="nos-about-item">
+            <span class="nos-about-asterisk">✦</span>
+            <span>Nos enfocamos en resultados medibles, no en entregas vacías.</span>
+          </li>
+          <li class="nos-about-item">
+            <span class="nos-about-asterisk">✦</span>
+            <span>Equipos ágiles y directos — sin intermediarios ni burocracia.</span>
+          </li>
+          <li class="nos-about-item">
+            <span class="nos-about-asterisk">✦</span>
+            <span>Tecnología real para negocios reales, a precio justo.</span>
+          </li>
+        </ul>
+
+        <a href="#" class="nos-about-cta" data-goto="contacto">Cuéntanos tu proyecto →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── BLOQUE 4: EN QUÉ SOMOS BUENOS ── -->
+  <div class="nos-skills">
+    <div class="nos-skills-inner">
+
+      <!-- Columna izquierda: lista -->
+      <div class="nos-skills-right">
+        <p class="nos-skills-label">EN QUÉ SOMOS BUENOS</p>
+        <ul class="nos-skills-list">
+
+          <li class="nos-skills-item" data-index="0">
+            <div class="nos-skills-tags">
+              <span class="nos-tag" style="--c:#ffd6d6">Landing Pages</span>
+              <span class="nos-tag" style="--c:#d6f0ff">E-commerce</span>
+              <span class="nos-tag" style="--c:#d6ffd9">SEO Local</span>
+              <span class="nos-tag" style="--c:#fff0d6">Menú Digital</span>
+              <span class="nos-tag" style="--c:#e8d6ff">Diseño UI</span>
+            </div>
+            <span class="nos-skills-num">01</span>
+            <span class="nos-skills-name">Diseño Web</span>
+          </li>
+
+          <li class="nos-skills-item" data-index="1">
+            <div class="nos-skills-tags">
+              <span class="nos-tag" style="--c:#d6ffd9">Panel Admin</span>
+              <span class="nos-tag" style="--c:#ffd6d6">POS / Caja</span>
+              <span class="nos-tag" style="--c:#d6f0ff">Inventario</span>
+              <span class="nos-tag" style="--c:#fff0d6">Agendas Online</span>
+              <span class="nos-tag" style="--c:#e8d6ff">Dashboards</span>
+            </div>
+            <span class="nos-skills-num">02</span>
+            <span class="nos-skills-name">Web Apps <span class="nos-skills-amp">&amp;</span> Sistemas</span>
+          </li>
+
+          <li class="nos-skills-item" data-index="2">
+            <div class="nos-skills-tags">
+              <span class="nos-tag" style="--c:#d6f0ff">WhatsApp Bot</span>
+              <span class="nos-tag" style="--c:#ffd6d6">Notificaciones</span>
+              <span class="nos-tag" style="--c:#d6ffd9">Flujos Digitales</span>
+              <span class="nos-tag" style="--c:#fff0d6">Integraciones</span>
+              <span class="nos-tag" style="--c:#e8d6ff">Corte de Caja</span>
+            </div>
+            <span class="nos-skills-num">03</span>
+            <span class="nos-skills-name">Automatización</span>
+          </li>
+
+          <li class="nos-skills-item" data-index="3">
+            <div class="nos-skills-tags">
+              <span class="nos-tag" style="--c:#ffd6d6">Chatbots IA</span>
+              <span class="nos-tag" style="--c:#d6ffd9">Generación de Contenido</span>
+              <span class="nos-tag" style="--c:#d6f0ff">Análisis de Datos</span>
+              <span class="nos-tag" style="--c:#e8d6ff">Asistentes Virtuales</span>
+              <span class="nos-tag" style="--c:#fff0d6">Prompts a Medida</span>
+            </div>
+            <span class="nos-skills-num">04</span>
+            <span class="nos-skills-name">Soluciones <span class="nos-skills-amp">con</span> IA</span>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Columna derecha: imagen sticky -->
+      <div class="nos-skills-preview">
+        <div class="nos-skills-img-wrap">
+          <img class="nos-skills-img active" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=80" alt="Diseño Web">
+          <img class="nos-skills-img" src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=700&q=80" alt="Web Apps">
+          <img class="nos-skills-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80" alt="Automatización">
+          <img class="nos-skills-img" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=700&q=80" alt="IA">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── BLOQUE 5: TRANSICIÓN CURVA ── -->
+  <div class="nos-curve-wrap" id="nosCurveWrap">
+    <div class="nos-curve-bg" id="nosCurveBg">
+      <div class="nos-curve-content">
+        <p class="nos-curve-label">NUESTRA MISIÓN</p>
+        <h2 class="nos-curve-title">
+          TRANSFORMANDO<br>
+          NEGOCIOS CON<br>
+          <span class="nos-curve-dim">DISEÑO REAL.</span>
+        </h2>
+        <a href="#" class="nos-curve-cta" data-goto="contacto">Contáctanos →</a>
+      </div>
+    </div>
+  </div>
+
+</section><!-- /nosotros -->
+
+    <section id="servicios" class="page-section">
+      <div class="section-label">02 &nbsp;/&nbsp; Servicios</div>
+      <div class="srv-header">
+        <h2 class="srv-title">Lo que<br>hacemos.</h2>
+        <p class="srv-subtitle">Tres líneas de trabajo pensadas para negocios reales que quieren crecer sin complicarse.</p>
+      </div>
+      <div class="srv-list">
+        <div class="srv-item">
+          <span class="srv-num">01</span>
+          <div class="srv-info">
+            <span class="srv-name">Diseño Web</span>
+            <span class="srv-desc">Páginas rápidas, bonitas y que convierten visitas en clientes. Hechas a mano, no con templates de WordPress.</span>
+            <div class="srv-tags">
+              <span class="srv-tag">Landing page</span>
+              <span class="srv-tag">Menú digital</span>
+              <span class="srv-tag">Citas online</span>
+              <span class="srv-tag">SEO local</span>
+            </div>
+          </div>
+          <div class="srv-arrow"><svg viewBox="0 0 14 14"><path d="M2 12L12 2M12 2H5M12 2V9" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="srv-item">
+          <span class="srv-num">02</span>
+          <div class="srv-info">
+            <span class="srv-name">Sistemas de Gestión</span>
+            <span class="srv-desc">Desarrollamos el software que tu negocio necesita: punto de venta, control de inventario, reportes — sin pagar licencias caras cada mes.</span>
+            <div class="srv-tags">
+              <span class="srv-tag">POS / Caja</span>
+              <span class="srv-tag">Inventario</span>
+              <span class="srv-tag">Reportes</span>
+              <span class="srv-tag">Panel de control</span>
+            </div>
+          </div>
+          <div class="srv-arrow"><svg viewBox="0 0 14 14"><path d="M2 12L12 2M12 2H5M12 2V9" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="srv-item">
+          <span class="srv-num">03</span>
+          <div class="srv-info">
+            <span class="srv-name">Automatización de Procesos</span>
+            <span class="srv-desc">Conectamos tus herramientas para que trabajen solas: confirmaciones de cita, notificaciones, cortes de caja automáticos y más.</span>
+            <div class="srv-tags">
+              <span class="srv-tag">WhatsApp automático</span>
+              <span class="srv-tag">Agendas</span>
+              <span class="srv-tag">Notificaciones</span>
+              <span class="srv-tag">Flujos digitales</span>
+            </div>
+          </div>
+          <div class="srv-arrow"><svg viewBox="0 0 14 14"><path d="M2 12L12 2M12 2H5M12 2V9" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SOLUCIONES ════════════════════════════════════════ -->
+    <section id="soluciones" class="page-section">
+      <div class="section-label">03 &nbsp;/&nbsp; Soluciones Digitales</div>
+      <div class="sol-header">
+        <h2 class="sol-title">Soluciones<br><span>Digitales</span></h2>
+        <p class="sol-intro">Sistemas desarrollados por nosotros para que dejes de administrar tu negocio en cuadernos y hojas de Excel.</p>
+      </div>
+      <div class="sol-grid">
+        <div class="sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="sol-card-name">Sistema POS</div>
+          <div class="sol-card-desc">Punto de venta para cafeterías, fondas y tiendas. Registra ventas, imprime tickets, cierra caja y ve tus ingresos del día en segundos.</div>
+          <div class="sol-card-features">
+            <span class="sol-feature">Registro de productos y precios</span>
+            <span class="sol-feature">Cobro en efectivo y transferencia</span>
+            <span class="sol-feature">Corte de caja diario</span>
+            <span class="sol-feature">Historial de ventas</span>
+          </div>
+          <span class="sol-price">Desde <strong>$1,500 MXN</strong> &nbsp;+&nbsp; <strong>$299/mes</strong></span>
+        </div>
+        <div class="sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 3H8a2 2 0 00-2 2v2h12V5a2 2 0 00-2-2z"/></svg></div>
+          <div class="sol-card-name">Control de Inventario</div>
+          <div class="sol-card-desc">Sabe exactamente qué tienes, qué se está agotando y qué necesitas pedir. Adiós al conteo manual y las mermas sin explicación.</div>
+          <div class="sol-card-features">
+            <span class="sol-feature">Entradas y salidas de producto</span>
+            <span class="sol-feature">Alertas de stock bajo</span>
+            <span class="sol-feature">Historial de movimientos</span>
+            <span class="sol-feature">Acceso desde celular</span>
+          </div>
+          <span class="sol-price">Desde <strong>$1,200 MXN</strong> &nbsp;+&nbsp; <strong>$199/mes</strong></span>
+        </div>
+        <div class="sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 24 24"><path d="M9 17v-2m3 2v-4m3 4v-6M3 9l9-6 9 6v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+          <div class="sol-card-name">Panel de Administración</div>
+          <div class="sol-card-desc">Un dashboard hecho para dueños de negocio, no para contadores. Ve ventas, gastos y desempeño de un vistazo desde tu teléfono.</div>
+          <div class="sol-card-features">
+            <span class="sol-feature">Resumen diario / semanal</span>
+            <span class="sol-feature">Productos más vendidos</span>
+            <span class="sol-feature">Comparativa de períodos</span>
+            <span class="sol-feature">Exportar a PDF o Excel</span>
+          </div>
+          <span class="sol-price">Incluido con POS o inventario</span>
+        </div>
+      </div>
+      <div class="sol-grid-2">
+        <div class="sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></div>
+          <div class="sol-card-name">Gestión de Pedidos</div>
+          <div class="sol-card-desc">Para restaurantes y cocinas. El mesero toma el pedido desde su celular, llega directo a cocina — sin papel, sin errores.</div>
+          <div class="sol-card-features">
+            <span class="sol-feature">Comandas digitales por mesa</span>
+            <span class="sol-feature">Vista en cocina en tiempo real</span>
+            <span class="sol-feature">Estados: pendiente / listo / entregado</span>
+          </div>
+          <span class="sol-price">Desde <strong>$2,000 MXN</strong> &nbsp;+&nbsp; <strong>$399/mes</strong></span>
+        </div>
+        <div class="sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div class="sol-card-name">Control de Clientes</div>
+          <div class="sol-card-desc">Para salones, consultorios y servicios. Lleva historial de visitas, próximas citas y seguimiento.</div>
+          <div class="sol-card-features">
+            <span class="sol-feature">Expediente por cliente</span>
+            <span class="sol-feature">Agenda y recordatorios</span>
+            <span class="sol-feature">Historial de servicios</span>
+          </div>
+          <span class="sol-price">Desde <strong>$1,000 MXN</strong> &nbsp;+&nbsp; <strong>$199/mes</strong></span>
+        </div>
+      </div>
+      <div class="sol-cta">
+        <div class="sol-cta-text">
+          <span class="sol-cta-title">¿Tu negocio necesita algo específico?</span>
+          <span class="sol-cta-sub">Lo desarrollamos a medida · Sin licencias caras · Soporte incluido</span>
+        </div>
+        <a href="#" class="sol-cta-btn" data-goto="contacto">Cuéntanos tu caso →</a>
+      </div>
+    </section>
+
+    <!-- ══ CONTACTO ══════════════════════════════════════════ -->
+    <section id="contacto" class="page-section">
+
+      <div class="ctc-glow"></div>
+
+      <div class="ctc-hero">
+        <h1 class="ctc-title">
+          <span class="ctc-title-line">HAGAMOS ALGO</span>
+          <span class="ctc-title-line ctc-title-line--outline">INCREÍBLE</span>
+          <span class="ctc-title-line">JUNTOS.</span>
+        </h1>
+      </div>
+
+      <div class="ctc-body">
+
+        <!-- Formulario -->
+        <div class="ctc-form-wrap">
+          <div class="ctc-field">
+            <label class="ctc-label">Me interesa...</label>
+            <div class="ctc-chips">
+              <button type="button" class="ctc-chip" data-val="Diseño Web">Diseño Web</button>
+              <button type="button" class="ctc-chip" data-val="Soluciones IA">Soluciones IA</button>
+              <button type="button" class="ctc-chip" data-val="Sistema de Gestión">Sistema de Gestión</button>
+              <button type="button" class="ctc-chip" data-val="Todo lo anterior">Todo lo anterior</button>
+            </div>
+          </div>
+          <div class="ctc-field">
+            <label class="ctc-label" for="ctc-name">Tu nombre</label>
+            <input class="ctc-input" id="ctc-name" type="text" placeholder="Joel Arteaga" autocomplete="off" />
+          </div>
+          <div class="ctc-field">
+            <label class="ctc-label" for="ctc-email">Tu email</label>
+            <input class="ctc-input" id="ctc-email" type="email" placeholder="hola@tuempresa.mx" autocomplete="off" />
+          </div>
+          <div class="ctc-field">
+            <label class="ctc-label" for="ctc-msg">Cuéntanos de tu proyecto</label>
+            <textarea class="ctc-input ctc-textarea" id="ctc-msg" rows="5" placeholder="Tengo una barbería en CDMX y quiero..."></textarea>
+          </div>
+          <button class="ctc-submit" id="ctc-submit" type="button">
+            <span>Enviar mensaje</span>
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="ctc-success" id="ctc-success">
+            <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10l3 3 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>¡Mensaje enviado! Te respondemos pronto.</span>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="ctc-sidebar">
+          <div class="ctc-sidebar-block">
+            <span class="ctc-sidebar-label">Contacto directo</span>
+            <a href="mailto:hola@diso.mx" class="ctc-sidebar-link">hola@diso.mx</a>
+
+            <!-- WhatsApp CTA -->
+            <a href="https://wa.me/525525051055?text=Hola%20DISO%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios."
+               class="ctc-wa-btn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Escríbenos por WhatsApp
+            </a>
+          </div>
+          <div class="ctc-sidebar-block">
+            <span class="ctc-sidebar-label">Ubicación</span>
+            <span class="ctc-sidebar-val">Ciudad de México</span>
+            <span class="ctc-sidebar-val">México · 2025</span>
+          </div>
+          <div class="ctc-sidebar-block">
+            <span class="ctc-sidebar-label">Redes</span>
+            <a href="#" class="ctc-sidebar-link" target="_blank">Instagram</a>
+            <a href="#" class="ctc-sidebar-link" target="_blank">TikTok</a>
+            <a href="#" class="ctc-sidebar-link" target="_blank">LinkedIn</a>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Grano tipo nika — generado con Canvas -->
+  <canvas id="grain-canvas"></canvas>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
