@@ -1,315 +1,269 @@
 import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { initNav } from './nav.js'
-gsap.registerPlugin(ScrollTrigger)
+import { Flip } from 'gsap/Flip'
+import { initWork } from './work.js'
+
+gsap.registerPlugin(ScrollTrigger, Flip)
 
 // ─── LENIS ─────────────────────────────────────────────
 const lenis = new Lenis({ duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
-function raf(time) { lenis.raf(time); requestAnimationFrame(raf) }
-requestAnimationFrame(raf)
-
-// Conectar Lenis con ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update)
 gsap.ticker.add((time) => { lenis.raf(time * 1000) })
 gsap.ticker.lagSmoothing(0)
+lenis.on('scroll', ScrollTrigger.update)
 
-// ─── MAIN TIMELINE ─────────────────────────────────────
+// ─── LOADER ────────────────────────────────────────────
+const loader  = document.getElementById('loader')
+const ldrPct  = document.getElementById('ldr-pct')
+const ldrBar  = document.getElementById('ldr-bar')
+
+let progress = 0
+const pctInterval = setInterval(() => {
+  progress += Math.random() * 18
+  if (progress >= 100) { progress = 100; clearInterval(pctInterval) }
+  if (ldrPct) ldrPct.textContent = Math.floor(progress) + '%'
+  if (ldrBar) ldrBar.style.width = progress + '%'
+}, 120)
+
 const tl = gsap.timeline()
 
-// Loader letras
-tl.to('.logo-letter', { opacity:1, duration:0.05, stagger:0.12, ease:'power2.out' }, 0.3)
-  .to('.loader-subtitle', { opacity:1, duration:0.6, ease:'power2.out' }, 0.9)
-  .to('.loader-line', { width:180, duration:0.8, ease:'power3.out' }, 1.0)
-  .to({}, { duration: 0.9 })
+// Entrada de texto loader
+tl.from('.ldr-logo',  { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, 0.2)
+  .from('.ldr-inner', { yPercent: 110, duration: 0.8, ease: 'power3.out', stagger: 0.12 }, 0.4)
+  .from('.ldr-tag',   { opacity: 0, duration: 0.5, ease: 'power2.out' }, 0.6)
+  .to({}, { duration: 1.2 })
 
-// Cortinas loader
-  .to('.loader-curtain-left',  { scaleX:1, duration:0.7, ease:'power4.inOut', transformOrigin:'left center' }, '+=0.1')
-  .to('.loader-curtain-right', { scaleX:1, duration:0.7, ease:'power4.inOut', transformOrigin:'right center' }, '<')
-  .to('#loader', { opacity:0, duration:0.3, onComplete: () => document.getElementById('loader').style.display='none' })
-
-// Navbar
-  .to('#navbar', { opacity:1, duration:0.8, ease:'power2.out' }, '-=0.1')
-  .call(() => initNav())
-
-// REVEAL imagen hero — cortina sube
-  .to('.hero-img-reveal .img-curtain', {
-    scaleY: 0, duration: 1.1, ease: 'power4.inOut', transformOrigin: 'bottom',
-  }, '-=0.4')
-
-// Tagline
-  .to('.hero-tagline', { opacity:1, duration:0.6, ease:'power2.out' }, '-=0.5')
-
-// Servicios en stagger — como el título del DON
-  .to('.svc-item', {
-    opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power4.out',
-  }, '-=0.3')
-
-// Panel derecho
-  .to('.hip-products-label', { opacity:1, y:0, duration:0.7, ease:'power2.out' }, '-=0.6')
-  .to('.hip-card', { opacity:1, y:0, duration:0.8, ease:'power3.out' }, '-=0.4')
-
-// REVEAL imagen producto
-  .to('.product-img-reveal .img-curtain', {
-    scaleY: 0, duration: 1.0, ease: 'power4.inOut', transformOrigin: 'bottom',
-  }, '-=0.5')
-
-  .to('.hip-learn-more', { opacity:1, y:0, duration:0.6, ease:'power2.out' }, '-=0.3')
-  .to('.hip-divider',    { opacity:1, duration:0.5 }, '-=0.3')
-  .to('.hip-ticker-wrap',{ opacity:1, y:0, duration:0.7, ease:'power2.out' }, '-=0.3')
-
-// ─── PARALLAX ──────────────────────────────────────────
-const heroBg = document.querySelector('.hero-photo-bg')
-window.addEventListener('mousemove', (e) => {
-  gsap.to(heroBg, {
-    x: (e.clientX / window.innerWidth - 0.5) * 14,
-    y: (e.clientY / window.innerHeight - 0.5) * 10,
-    duration: 1.8, ease: 'power1.out',
+// Salida loader
+  .to('#loader', {
+    yPercent: -100, duration: 0.8, ease: 'power4.inOut',
+    onComplete: () => { if (loader) loader.style.display = 'none' }
   })
-})
 
-// ─── CORNERS BREATHE ───────────────────────────────────
-gsap.to('.frame-corner', { opacity:0.8, duration:2, yoyo:true, repeat:-1, ease:'sine.inOut', stagger:0.5 })
+// Entrada nav
+  .from('#nav', { opacity: 0, y: -20, duration: 0.5, ease: 'power2.out' }, '-=0.3')
 
-// ─── EQUIPO: scroll pinneado — foto centrada + nombre gigante ───
+// Init nav y work
+  .call(() => {
+    initNav()
+    initWork(lenis)
+  })
 
-function easeOut(t) { return 1 - Math.pow(1 - Math.min(1, Math.max(0, t)), 3) }
-function easeIn(t)  { return Math.pow(Math.min(1, Math.max(0, t)), 2) }
+// ─── NAV ───────────────────────────────────────────────
+function initNav() {
+  const menuBtn   = document.getElementById('nav-menu-btn')
+  const overlay   = document.getElementById('menu-overlay')
+  const menuLabel = document.getElementById('nav-menu-label')
+  const items     = document.querySelectorAll('.menu-item')
 
-const slides      = gsap.utils.toArray('.equipo-slide')
-const totalSlides = slides.length
+  if (!menuBtn || !overlay) return
 
-slides.forEach((slide, i) => {
-  const photo      = slide.querySelector('.slide-photo')
-  const bgNombre   = slide.querySelector('.slide-bg-nombre')
-  const bgApellido = slide.querySelector('.slide-bg-apellido')
-  const topInfo    = slide.querySelector('.slide-top-info')
-  const bottomInfo = slide.querySelector('.slide-bottom-info')
+  let isOpen = false
 
-  const segmentSize = 1 / totalSlides
-  const start       = i * segmentSize
-  const end         = (i + 1) * segmentSize
+  gsap.set(overlay, { yPercent: -100, display: 'none' })
 
-  // Estado inicial
-  gsap.set(slide,      { autoAlpha: i === 0 ? 1 : 0 })
-  gsap.set(photo,      { y: i === 0 ? '0%' : '100%' })
-  gsap.set(bgNombre,   { y: i === 0 ? 0 : 40, autoAlpha: i === 0 ? 1 : 0 })
-  gsap.set(bgApellido, { y: i === 0 ? 0 : 40, autoAlpha: i === 0 ? 1 : 0 })
-  gsap.set(topInfo,    { y: i === 0 ? 0 : -20, autoAlpha: i === 0 ? 1 : 0 })
-  gsap.set(bottomInfo, { y: i === 0 ? 0 : 20,  autoAlpha: i === 0 ? 1 : 0 })
-
-  // Primer slide: entrada sin scroll
-  if (i === 0) {
-    gsap.timeline({ delay: 0.2 })
-      .to(photo,      { y: '0%', duration: 1.4, ease: 'power4.out' }, 0)
-      .to(bgNombre,   { y: 0, autoAlpha: 1, duration: 1, ease: 'power3.out' }, 0.2)
-      .to(bgApellido, { y: 0, autoAlpha: 1, duration: 1, ease: 'power3.out' }, 0.3)
-      .to(topInfo,    { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out' }, 0.5)
-      .to(bottomInfo, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out' }, 0.65)
+  function openMenu() {
+    if (isOpen) return
+    isOpen = true
+    menuBtn.setAttribute('aria-expanded', 'true')
+    menuBtn.classList.add('is-active')
+    if (menuLabel) menuLabel.textContent = 'CLOSE'
+    gsap.set(overlay, { display: 'flex' })
+    gsap.set(items, { opacity: 0, y: 24 })
+    gsap.set('.menu-footer', { opacity: 0, y: 10 })
+    gsap.to(overlay, { yPercent: 0, duration: 0.65, ease: 'power3.inOut' })
+    gsap.to(items, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', stagger: 0.08, delay: 0.4 })
+    gsap.to('.menu-footer', { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', delay: 0.65 })
   }
 
-  // Scroll trigger para slides > 0
-  if (i > 0) {
-    ScrollTrigger.create({
-      trigger: '#equipoScrollWrap',
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: true,
-      onUpdate: (self) => {
-        const p          = self.progress
-        const enterEnd   = start + segmentSize * 0.4
-
-        if (p >= start && p < end) {
-          const ep = Math.min(1, (p - start) / (enterEnd - start)) // 0→1 durante entrada
-          gsap.set(slide,      { autoAlpha: 1 })
-          gsap.set(photo,      { y: `${gsap.utils.interpolate(100, 0, easeOut(ep))}%` })
-          gsap.set(bgNombre,   { y: gsap.utils.interpolate(40, 0, easeOut(ep)), autoAlpha: gsap.utils.interpolate(0, 1, easeOut(ep)) })
-          gsap.set(bgApellido, { y: gsap.utils.interpolate(40, 0, easeOut(ep)), autoAlpha: gsap.utils.interpolate(0, 1, easeOut(ep)) })
-
-          if (ep > 0.45) {
-            const tp = (ep - 0.45) / 0.55
-            gsap.set(topInfo,    { y: gsap.utils.interpolate(-20, 0, easeOut(tp)), autoAlpha: gsap.utils.interpolate(0, 1, easeOut(tp)) })
-            gsap.set(bottomInfo, { y: gsap.utils.interpolate(20,  0, easeOut(tp)), autoAlpha: gsap.utils.interpolate(0, 1, easeOut(tp)) })
-          }
-
-          // Salida al pasar al siguiente
-          if (i < totalSlides - 1) {
-            const exitStart = end - segmentSize * 0.18
-            if (p >= exitStart) {
-              const xp = (p - exitStart) / (segmentSize * 0.18)
-              gsap.set(slide, { autoAlpha: gsap.utils.interpolate(1, 0, easeIn(xp)) })
-            }
-          }
-
-        } else if (p < start) {
-          gsap.set(slide,      { autoAlpha: 0 })
-          gsap.set(photo,      { y: '100%' })
-          gsap.set(bgNombre,   { y: 40, autoAlpha: 0 })
-          gsap.set(bgApellido, { y: 40, autoAlpha: 0 })
-          gsap.set(topInfo,    { y: -20, autoAlpha: 0 })
-          gsap.set(bottomInfo, { y: 20,  autoAlpha: 0 })
-        }
-      }
-    })
-  } else {
-    // Slide 0: solo salida
-    ScrollTrigger.create({
-      trigger: '#equipoScrollWrap',
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: true,
-      onUpdate: (self) => {
-        const p         = self.progress
-        const exitStart = segmentSize * 0.82
-        if (p > exitStart && p < segmentSize) {
-          const xp = (p - exitStart) / (segmentSize * 0.18)
-          gsap.set(slide, { autoAlpha: gsap.utils.interpolate(1, 0, easeIn(xp)) })
-        } else if (p <= exitStart) {
-          gsap.set(slide, { autoAlpha: 1 })
-        }
-      }
+  function closeMenu() {
+    if (!isOpen) return
+    isOpen = false
+    menuBtn.setAttribute('aria-expanded', 'false')
+    menuBtn.classList.remove('is-active')
+    if (menuLabel) menuLabel.textContent = 'MENU'
+    gsap.to(items, { opacity: 0, y: -10, duration: 0.2, ease: 'power2.in', stagger: { each: 0.04, from: 'end' } })
+    gsap.to(overlay, {
+      yPercent: -100, duration: 0.6, ease: 'power3.inOut', delay: 0.1,
+      onComplete: () => gsap.set(overlay, { display: 'none' })
     })
   }
-})
 
-// Header equipo entrada
-gsap.from('.equipo-label', {
-  scrollTrigger: { trigger: '.equipo-header', start: 'top 80%' },
-  y: 20, autoAlpha: 0, duration: 0.7, ease: 'power3.out'
-})
-gsap.from('.equipo-titulo', {
-  scrollTrigger: { trigger: '.equipo-header', start: 'top 75%' },
-  y: 30, autoAlpha: 0, duration: 0.9, ease: 'power3.out', delay: 0.1
-})
-gsap.from('.equipo-desc', {
-  scrollTrigger: { trigger: '.equipo-header', start: 'top 72%' },
-  y: 20, autoAlpha: 0, duration: 0.7, ease: 'power3.out', delay: 0.25
-})
+  menuBtn.addEventListener('click', () => isOpen ? closeMenu() : openMenu())
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen) closeMenu() })
 
-// ─── SERVICIOS: SCROLL ANIMATIONS ──────────────────────
-
-// Título gigante — parallax vertical suave
-gsap.to('#srvTitle', {
-  scrollTrigger: {
-    trigger: '#servicios',
-    start: 'top bottom',
-    end: 'bottom top',
-    scrub: 1.5,
-  },
-  y: -80,
-  ease: 'none',
-})
-
-// Header entrada
-gsap.from('.srv-label', {
-  scrollTrigger: { trigger: '.srv-header', start: 'top 85%' },
-  y: 20, autoAlpha: 0, duration: 0.7, ease: 'power3.out'
-})
-gsap.from('.srv-desc', {
-  scrollTrigger: { trigger: '.srv-header', start: 'top 80%' },
-  y: 20, autoAlpha: 0, duration: 0.8, ease: 'power3.out', delay: 0.15
-})
-
-// Reveal cortinas de las imágenes al scroll
-gsap.utils.toArray('.srv-img-curtain').forEach((curtain, i) => {
-  gsap.to(curtain, {
-    scrollTrigger: {
-      trigger: curtain.closest('.srv-img-wrap'),
-      start: 'top 85%',
-      toggleActions: 'play none none none',
-    },
-    scaleY: 0,
-    duration: 1.2,
-    ease: 'power4.inOut',
-    delay: i * 0.15,
-  })
-})
-
-// Info de cada servicio — entrada desde abajo
-gsap.utils.toArray('.srv-info').forEach((info, i) => {
-  gsap.from(info, {
-    scrollTrigger: {
-      trigger: info,
-      start: 'top 90%',
-      toggleActions: 'play none none none',
-    },
-    y: 30, autoAlpha: 0,
-    duration: 0.8,
-    ease: 'power3.out',
-    delay: i * 0.1,
-  })
-})
-
-// ─── CONTACTO: SCROLL ANIMATIONS ───────────────────────
-
-gsap.to('#ctoTitle', {
-  scrollTrigger: { trigger: '#contacto', start: 'top bottom', end: 'bottom top', scrub: 1.5 },
-  y: -80, ease: 'none',
-})
-
-gsap.from('.cto-label', {
-  scrollTrigger: { trigger: '.cto-header', start: 'top 85%' },
-  y: 20, autoAlpha: 0, duration: 0.7, ease: 'power3.out'
-})
-gsap.from('.cto-desc', {
-  scrollTrigger: { trigger: '.cto-header', start: 'top 80%' },
-  y: 20, autoAlpha: 0, duration: 0.8, ease: 'power3.out', delay: 0.15
-})
-
-gsap.utils.toArray('.cto-col').forEach((col, i) => {
-  gsap.from(col, {
-    scrollTrigger: { trigger: '.cto-grid', start: 'top 80%' },
-    y: 40, autoAlpha: 0, duration: 0.9, ease: 'power3.out', delay: i * 0.15,
-  })
-})
-
-gsap.from('.cto-footer', {
-  scrollTrigger: { trigger: '.cto-footer', start: 'top 95%' },
-  y: 16, autoAlpha: 0, duration: 0.7, ease: 'power3.out'
-})
-
-// ─── CHIPS: selección única por grupo ──────────────────
-document.querySelectorAll('.rsv-chips').forEach(group => {
-  group.querySelectorAll('.rsv-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      group.querySelectorAll('.rsv-chip').forEach(c => c.classList.remove('active'))
-      chip.classList.add('active')
+  // Links del menú
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href')
+      if (href && href.startsWith('#')) {
+        e.preventDefault()
+        closeMenu()
+        setTimeout(() => {
+          const target = document.querySelector(href)
+          if (target) lenis.scrollTo(target, { offset: 0, duration: 1.4 })
+        }, 400)
+      } else {
+        closeMenu()
+      }
     })
   })
+
+  // Botones data-goto
+  document.querySelectorAll('[data-goto]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault()
+      const target = document.getElementById(btn.dataset.goto)
+      if (target) {
+        if (isOpen) closeMenu()
+        setTimeout(() => lenis.scrollTo(target, { offset: 0, duration: 1.4 }), isOpen ? 400 : 0)
+      }
+    })
+  })
+}
+
+// ─── GRAIN CANVAS ──────────────────────────────────────
+const canvas = document.getElementById('grain-canvas')
+if (canvas) {
+  const ctx = canvas.getContext('2d')
+  let w, h, frame = 0
+
+  function resize() {
+    w = canvas.width  = window.innerWidth
+    h = canvas.height = window.innerHeight
+  }
+
+  function drawGrain() {
+    const imgData = ctx.createImageData(w, h)
+    const data = imgData.data
+    for (let i = 0; i < data.length; i += 4) {
+      const v = Math.random() * 255
+      data[i] = data[i+1] = data[i+2] = v
+      data[i+3] = 18
+    }
+    ctx.putImageData(imgData, 0, 0)
+    frame++
+    if (frame % 2 === 0) requestAnimationFrame(drawGrain)
+    else requestAnimationFrame(drawGrain)
+  }
+
+  resize()
+  window.addEventListener('resize', resize)
+  drawGrain()
+}
+
+// ─── NOSOTROS ANIMACIONES ──────────────────────────────
+
+// Palabras hero
+gsap.utils.toArray('.nos-word').forEach((word, i) => {
+  gsap.from(word, {
+    scrollTrigger: { trigger: '.nos-hero-headline', start: 'top 80%' },
+    opacity: 0, y: 20, duration: 0.6, ease: 'power3.out', delay: i * 0.04
+  })
 })
 
-// ─── WHATSAPP: armar mensaje y abrir ───────────────────
-document.getElementById('rsvWaBtn').addEventListener('click', () => {
-  const nombre   = document.getElementById('rsv-nombre').value.trim()
-  const fecha    = document.getElementById('rsv-fecha').value
-  const hora     = document.getElementById('rsv-hora').value
-  const notas    = document.getElementById('rsv-notas').value.trim()
-
-  const servicio = document.querySelector('#rsvChips .rsv-chip.active')?.dataset.value || ''
-  const barbero  = document.querySelector('#rsvBarbers .rsv-chip.active')?.dataset.value || ''
-
-  // Validación mínima
-  if (!nombre) { alert('Por favor ingresa tu nombre.'); return }
-  if (!servicio) { alert('Por favor selecciona un servicio.'); return }
-  if (!fecha || !hora) { alert('Por favor selecciona fecha y hora.'); return }
-
-  // Formatear fecha legible
-  const [y, m, d] = fecha.split('-')
-  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
-  const fechaTexto = `${parseInt(d)} de ${meses[parseInt(m)-1]} de ${y}`
-
-  // Armar mensaje
-  let msg = `Hola, me gustaría reservar una cita en RÍOS Barber & Groom.\n\n`
-  msg += `👤 *Nombre:* ${nombre}\n`
-  msg += `✂️ *Servicio:* ${servicio}\n`
-  if (barbero) msg += `💈 *Barbero:* ${barbero}\n`
-  msg += `📅 *Fecha:* ${fechaTexto}\n`
-  msg += `🕐 *Hora:* ${hora} hrs\n`
-  if (notas) msg += `📝 *Notas:* ${notas}\n`
-  msg += `\n¡Gracias!`
-
-  // Número del dueño — cambia por el real
-  const telefono = '525512345678'
-  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(msg)}`
-  window.open(url, '_blank')
+// Video reel
+ScrollTrigger.create({
+  trigger: '#nosReelWrap',
+  start: 'top 85%',
+  onEnter: () => {
+    gsap.to('#nosReelWrap', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' })
+    gsap.to('#nosHeroPara', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.15 })
+  }
 })
+gsap.set('#nosReelWrap', { opacity: 0, y: 40 })
+gsap.set('#nosHeroPara', { opacity: 0, y: 30 })
+
+// Play button reel
+const playBtn = document.getElementById('nosReelPlay')
+const reelOverlay = document.getElementById('nosReelOverlay')
+const reelVideo = document.getElementById('nosReelVideo')
+if (playBtn && reelOverlay && reelVideo) {
+  playBtn.addEventListener('click', () => {
+    gsap.to(reelOverlay, { opacity: 0, duration: 0.4, onComplete: () => {
+      reelOverlay.style.display = 'none'
+      reelVideo.src = reelVideo.src.replace('autoplay=0', 'autoplay=1')
+    }})
+  })
+}
+
+// Carretes diagonales
+gsap.from('.nos-reel-row--1', {
+  scrollTrigger: { trigger: '#nosShaping', start: 'top 80%' },
+  x: -150, opacity: 0, duration: 1.2, ease: 'power3.out'
+})
+gsap.from('.nos-reel-row--2', {
+  scrollTrigger: { trigger: '#nosShaping', start: 'top 75%' },
+  x: 150, opacity: 0, duration: 1.2, ease: 'power3.out', delay: 0.15
+})
+
+// Texto shaping
+gsap.utils.toArray('.nos-sw').forEach((word, i) => {
+  gsap.from(word, {
+    scrollTrigger: { trigger: '#nosShaping', start: 'top 75%' },
+    opacity: 0, y: 30, duration: 0.7, ease: 'power3.out', delay: i * 0.08
+  })
+})
+
+// About lines
+gsap.utils.toArray('.nos-ab-inner').forEach((line, i) => {
+  gsap.from(line, {
+    scrollTrigger: { trigger: '.nos-about-header', start: 'top 80%' },
+    yPercent: 110, duration: 0.8, ease: 'power3.out', delay: i * 0.1
+  })
+})
+
+// About imagen
+gsap.from('.nos-about-img-inner', {
+  scrollTrigger: { trigger: '.nos-about-body', start: 'top 80%' },
+  scale: 1.1, opacity: 0, duration: 1.1, ease: 'power3.out'
+})
+
+gsap.from('.nos-about-content', {
+  scrollTrigger: { trigger: '.nos-about-body', start: 'top 75%' },
+  x: 40, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.2
+})
+
+// Skills hover
+const skillItems = document.querySelectorAll('.nos-skills-item')
+const skillImgs  = document.querySelectorAll('.nos-skills-img')
+skillItems.forEach((item, i) => {
+  item.addEventListener('mouseenter', () => {
+    skillImgs.forEach(img => img.classList.remove('active'))
+    if (skillImgs[i]) skillImgs[i].classList.add('active')
+    gsap.from(skillImgs[i], { opacity: 0, scale: 1.05, duration: 0.5, ease: 'power2.out' })
+  })
+})
+
+// ─── CONTACTO ──────────────────────────────────────────
+const chips = document.querySelectorAll('.ctc-chip')
+chips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'))
+    chip.classList.add('active')
+  })
+})
+
+const submitBtn = document.getElementById('ctc-submit')
+const successEl = document.getElementById('ctc-success')
+if (submitBtn) {
+  submitBtn.addEventListener('click', () => {
+    const name    = document.getElementById('ctc-name')?.value.trim()
+    const email   = document.getElementById('ctc-email')?.value.trim()
+    const msg     = document.getElementById('ctc-msg')?.value.trim()
+    const interes = document.querySelector('.ctc-chip.active')?.dataset.val || ''
+
+    if (!name || !email || !msg) { alert('Por favor completa todos los campos.'); return }
+
+    let waMsg = `Hola DISO®, me interesa: *${interes}*\n\n`
+    waMsg += `👤 *Nombre:* ${name}\n`
+    waMsg += `📧 *Email:* ${email}\n`
+    waMsg += `💬 *Mensaje:* ${msg}`
+
+    window.open(`https://wa.me/525525051055?text=${encodeURIComponent(waMsg)}`, '_blank')
+
+    if (successEl) {
+      gsap.to(successEl, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' })
+      successEl.style.display = 'flex'
+    }
+  })
+}
